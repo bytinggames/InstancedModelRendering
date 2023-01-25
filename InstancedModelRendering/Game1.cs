@@ -74,7 +74,7 @@ namespace InstancedModelRendering
                     if (instanced)
                     {
                         GraphicsDevice.SetVertexBuffers(
-                            new VertexBufferBinding(meshPart.VertexBuffer),
+                            new VertexBufferBinding(meshPart.VertexBuffer, meshPart.VertexOffset),
                             new VertexBufferBinding(instanceBuffer, 0, 1));
                     }
                     else
@@ -90,7 +90,7 @@ namespace InstancedModelRendering
                         {
                             // This doesn't work as expected for offsets larger than 0
                             GraphicsDevice.DrawInstancedPrimitives(PrimitiveType.TriangleList,
-                                meshPart.VertexOffset,
+                                0,
                                 meshPart.StartIndex,
                                 meshPart.PrimitiveCount,
                                 instanceBuffer.VertexCount);
